@@ -1,0 +1,29 @@
+{
+  "sourceId": "statscan-pop-estimates",
+  "periods": ["2025-Q2", "2025-Q3", "2025-Q4"],
+  "records": [
+    { "metricId": "population-total", "geographyId": "ca", "values": [40960000, 41120000, 41240000] },
+    { "metricId": "population-canadian-born", "geographyId": "ca", "values": [29300000, 29380000, 29450000] },
+    { "metricId": "population-naturalized", "geographyId": "ca", "values": [5050000, 5110000, 5175000] },
+    { "metricId": "population-permanent-residents", "geographyId": "ca", "values": [1840000, 1880000, 1915000] },
+    { "metricId": "population-temporary-residents", "geographyId": "ca", "values": [4770000, 4890000, 5005000] },
+    { "metricId": "population-total", "geographyId": "on", "values": [16120000, 16190000, 16260000] },
+    { "metricId": "population-total", "geographyId": "qc", "values": [9060000, 9090000, 9125000] },
+    { "metricId": "population-total", "geographyId": "bc", "values": [5680000, 5710000, 5750000] },
+    { "metricId": "population-total", "geographyId": "ab", "values": [4860000, 4900000, 4945000] },
+    { "metricId": "population-total", "geographyId": "mb", "values": [1480000, 1490000, 1498000] },
+    { "metricId": "population-total", "geographyId": "sk", "values": [1240000, 1248000, 1256000] },
+    { "metricId": "population-total", "geographyId": "ns", "values": [1082000, 1089000, 1095000] },
+    { "metricId": "population-total", "geographyId": "nb", "values": [858000, 862000, 866000] },
+    { "metricId": "population-total", "geographyId": "nl", "values": [545000, 548000, 551000] },
+    { "metricId": "population-total", "geographyId": "pe", "values": [181000, 182000, 183000] },
+    { "metricId": "population-temporary-residents", "geographyId": "on", "values": [2160000, 2220000, 2280000] },
+    { "metricId": "population-temporary-residents", "geographyId": "qc", "values": [610000, 628000, 645000] },
+    { "metricId": "population-temporary-residents", "geographyId": "bc", "values": [720000, 742000, 760000] },
+    { "metricId": "population-temporary-residents", "geographyId": "ab", "values": [520000, 538000, 556000] },
+    { "metricId": "population-naturalized", "geographyId": "on", "values": [2380000, 2410000, 2440000] },
+    { "metricId": "population-naturalized", "geographyId": "qc", "values": [970000, 985000, 997000] },
+    { "metricId": "population-permanent-residents", "geographyId": "on", "values": [900000, 918000, 934000] },
+    { "metricId": "population-permanent-residents", "geographyId": "bc", "values": [270000, 278000, 285000] }
+  ]
+}

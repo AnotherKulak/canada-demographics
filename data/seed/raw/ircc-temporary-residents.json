@@ -1,0 +1,24 @@
+{
+  "sourceId": "ircc-temp-residents",
+  "periods": ["2025-Q2", "2025-Q3", "2025-Q4"],
+  "records": [
+    { "metricId": "temporary-asylum-claimants", "geographyId": "ca", "values": [356000, 372000, 388000] },
+    { "metricId": "temporary-tfw", "geographyId": "ca", "values": [1120000, 1150000, 1180000] },
+    { "metricId": "temporary-imp", "geographyId": "ca", "values": [1420000, 1450000, 1490000] },
+    { "metricId": "temporary-students", "geographyId": "ca", "values": [1640000, 1690000, 1730000] },
+    { "metricId": "temporary-asylum-claimants", "geographyId": "on", "values": [168000, 176000, 183000] },
+    { "metricId": "temporary-tfw", "geographyId": "on", "values": [362000, 371000, 381000] },
+    { "metricId": "temporary-imp", "geographyId": "on", "values": [720000, 742000, 765000] },
+    { "metricId": "temporary-students", "geographyId": "on", "values": [808000, 831000, 850000] },
+    { "metricId": "temporary-asylum-claimants", "geographyId": "qc", "values": [84000, 90000, 95000] },
+    { "metricId": "temporary-tfw", "geographyId": "qc", "values": [176000, 181000, 186000] },
+    { "metricId": "temporary-imp", "geographyId": "qc", "values": [142000, 146000, 150000] },
+    { "metricId": "temporary-students", "geographyId": "qc", "values": [208000, 211000, 214000] },
+    { "metricId": "temporary-tfw", "geographyId": "bc", "values": [224000, 230000, 238000] },
+    { "metricId": "temporary-imp", "geographyId": "bc", "values": [198000, 205000, 211000] },
+    { "metricId": "temporary-students", "geographyId": "bc", "values": [246000, 254000, 261000] },
+    { "metricId": "temporary-tfw", "geographyId": "ab", "values": [205000, 211000, 217000] },
+    { "metricId": "temporary-imp", "geographyId": "ab", "values": [145000, 149000, 153000] },
+    { "metricId": "temporary-students", "geographyId": "ab", "values": [128000, 132000, 136000] }
+  ]
+}

@@ -1,0 +1,2350 @@
+{
+  "generatedAt": "2026-03-14T09:00:00-04:00",
+  "sources": [
+    {
+      "id": "statscan-pop-estimates",
+      "name": "Quarterly population estimates",
+      "organization": "Statistics Canada",
+      "releaseDate": "2025-12-17",
+      "accessedAt": "2026-03-14T09:00:00-04:00",
+      "url": "https://www150.statcan.gc.ca/",
+      "note": "Seed snapshot for Canada and provincial population totals by residency status."
+    },
+    {
+      "id": "ircc-temp-residents",
+      "name": "Temporary residents by permit and claimant class",
+      "organization": "Immigration, Refugees and Citizenship Canada",
+      "releaseDate": "2025-11-28",
+      "accessedAt": "2026-03-14T09:00:00-04:00",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship.html",
+      "note": "Seed snapshot for temporary resident detail and category mapping."
+    }
+  ],
+  "methodologies": [
+    {
+      "id": "official-release",
+      "title": "Official release series",
+      "summary": "Directly reflects the latest official release snapshot used by the platform without modeled interpolation.",
+      "caveats": [
+        "Coverage varies by metric and release.",
+        "Subcategories may be revised retroactively by source agencies."
+      ],
+      "confidenceLabel": "high"
+    },
+    {
+      "id": "trend-nowcast",
+      "title": "Conservative nowcast",
+      "summary": "Projects the latest point using the trailing official trend and preserves a clear distinction from released values.",
+      "caveats": [
+        "Nowcasts should not be interpreted as official totals.",
+        "Short-term shocks may not be reflected until an official release lands."
+      ],
+      "confidenceLabel": "medium"
+    }
+  ],
+  "geographies": [
+    {
+      "id": "ca",
+      "slug": "canada",
+      "name": "Canada",
+      "code": "CA",
+      "level": "country",
+      "parentId": null
+    },
+    {
+      "id": "ab",
+      "slug": "alberta",
+      "name": "Alberta",
+      "code": "AB",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "bc",
+      "slug": "british-columbia",
+      "name": "British Columbia",
+      "code": "BC",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "mb",
+      "slug": "manitoba",
+      "name": "Manitoba",
+      "code": "MB",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "nb",
+      "slug": "new-brunswick",
+      "name": "New Brunswick",
+      "code": "NB",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "nl",
+      "slug": "newfoundland-and-labrador",
+      "name": "Newfoundland and Labrador",
+      "code": "NL",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "ns",
+      "slug": "nova-scotia",
+      "name": "Nova Scotia",
+      "code": "NS",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "on",
+      "slug": "ontario",
+      "name": "Ontario",
+      "code": "ON",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "pe",
+      "slug": "prince-edward-island",
+      "name": "Prince Edward Island",
+      "code": "PE",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "qc",
+      "slug": "quebec",
+      "name": "Quebec",
+      "code": "QC",
+      "level": "province",
+      "parentId": "ca"
+    },
+    {
+      "id": "sk",
+      "slug": "saskatchewan",
+      "name": "Saskatchewan",
+      "code": "SK",
+      "level": "province",
+      "parentId": "ca"
+    }
+  ],
+  "taxonomy": [
+    {
+      "id": "population-total",
+      "slug": "total-population",
+      "label": "Total population",
+      "description": "Headline population counts for Canada and provinces.",
+      "parentId": null
+    },
+    {
+      "id": "canadian-born",
+      "slug": "canadian-born-citizens",
+      "label": "Canadian-born citizens",
+      "description": "Residents born in Canada and holding citizenship by birth.",
+      "parentId": "population-total"
+    },
+    {
+      "id": "naturalized",
+      "slug": "naturalized-citizens",
+      "label": "Naturalized citizens",
+      "description": "Residents who obtained Canadian citizenship after immigration.",
+      "parentId": "population-total"
+    },
+    {
+      "id": "permanent-residents",
+      "slug": "permanent-residents",
+      "label": "Non-citizen permanent residents",
+      "description": "Residents with permanent resident status and without citizenship.",
+      "parentId": "population-total"
+    },
+    {
+      "id": "temporary-residents",
+      "slug": "temporary-residents",
+      "label": "Temporary residents",
+      "description": "Residents with temporary status including work, study, mobility, and asylum streams.",
+      "parentId": "population-total"
+    },
+    {
+      "id": "temp-asylum",
+      "slug": "asylum-claimants",
+      "label": "Asylum claimants",
+      "description": "Temporary residents with asylum claimant status where available.",
+      "parentId": "temporary-residents"
+    },
+    {
+      "id": "temp-tfw",
+      "slug": "temporary-foreign-workers",
+      "label": "Temporary Foreign Worker Program",
+      "description": "Temporary foreign workers admitted under TFW pathways.",
+      "parentId": "temporary-residents"
+    },
+    {
+      "id": "temp-imp",
+      "slug": "international-mobility-program",
+      "label": "International Mobility Program",
+      "description": "Temporary residents admitted under IMP work permit streams.",
+      "parentId": "temporary-residents"
+    },
+    {
+      "id": "temp-student",
+      "slug": "study-permit-holders",
+      "label": "Study permit holders",
+      "description": "Residents in Canada under student visa or study permit streams.",
+      "parentId": "temporary-residents"
+    },
+    {
+      "id": "origin-non-canadian-born",
+      "slug": "country-of-origin",
+      "label": "Country of origin",
+      "description": "Country-of-origin detail for residents born outside Canada.",
+      "parentId": null
+    }
+  ],
+  "metrics": [
+    {
+      "id": "population-total",
+      "slug": "population-total",
+      "label": "Total population",
+      "shortLabel": "Population",
+      "domain": "population",
+      "summary": "Headline population estimates for Canada and provinces.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "population-total",
+      "sourceIds": [
+        "statscan-pop-estimates"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "population",
+        "headline"
+      ]
+    },
+    {
+      "id": "population-canadian-born",
+      "slug": "population-canadian-born",
+      "label": "Canadian-born citizens",
+      "shortLabel": "Canadian-born",
+      "domain": "population",
+      "summary": "Residents born in Canada and holding citizenship by birth.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "canadian-born",
+      "sourceIds": [
+        "statscan-pop-estimates"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "population",
+        "residency-status"
+      ]
+    },
+    {
+      "id": "population-naturalized",
+      "slug": "population-naturalized",
+      "label": "Naturalized citizens",
+      "shortLabel": "Naturalized",
+      "domain": "population",
+      "summary": "Residents who immigrated and later became Canadian citizens.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "naturalized",
+      "sourceIds": [
+        "statscan-pop-estimates"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "population",
+        "residency-status"
+      ]
+    },
+    {
+      "id": "population-permanent-residents",
+      "slug": "population-permanent-residents",
+      "label": "Non-citizen permanent residents",
+      "shortLabel": "Permanent residents",
+      "domain": "population",
+      "summary": "Residents with permanent resident status who are not citizens.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "permanent-residents",
+      "sourceIds": [
+        "statscan-pop-estimates"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "population",
+        "residency-status"
+      ]
+    },
+    {
+      "id": "population-temporary-residents",
+      "slug": "population-temporary-residents",
+      "label": "Temporary residents",
+      "shortLabel": "Temporary residents",
+      "domain": "population",
+      "summary": "Residents with temporary status, including work, study, mobility, and asylum streams.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "temporary-residents",
+      "sourceIds": [
+        "statscan-pop-estimates",
+        "ircc-temp-residents"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "population",
+        "residency-status"
+      ]
+    },
+    {
+      "id": "temporary-asylum-claimants",
+      "slug": "temporary-asylum-claimants",
+      "label": "Asylum claimants",
+      "shortLabel": "Asylum claimants",
+      "domain": "population",
+      "summary": "Temporary residents with asylum claimant status where available.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "temp-asylum",
+      "sourceIds": [
+        "ircc-temp-residents"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "temporary-residents",
+        "asylum"
+      ]
+    },
+    {
+      "id": "temporary-tfw",
+      "slug": "temporary-tfw",
+      "label": "Temporary Foreign Worker Program",
+      "shortLabel": "TFW",
+      "domain": "population",
+      "summary": "Temporary residents admitted under Temporary Foreign Worker Program streams.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "temp-tfw",
+      "sourceIds": [
+        "ircc-temp-residents"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "temporary-residents",
+        "workers"
+      ]
+    },
+    {
+      "id": "temporary-imp",
+      "slug": "temporary-imp",
+      "label": "International Mobility Program",
+      "shortLabel": "IMP",
+      "domain": "population",
+      "summary": "Temporary residents admitted under International Mobility Program work permit streams.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "temp-imp",
+      "sourceIds": [
+        "ircc-temp-residents"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "temporary-residents",
+        "workers"
+      ]
+    },
+    {
+      "id": "temporary-students",
+      "slug": "temporary-students",
+      "label": "Study permit holders",
+      "shortLabel": "Students",
+      "domain": "population",
+      "summary": "Temporary residents present under study permit streams.",
+      "geographyLevels": [
+        "country",
+        "province"
+      ],
+      "timeGrain": "quarterly",
+      "unit": "people",
+      "taxonomyNodeId": "temp-student",
+      "sourceIds": [
+        "ircc-temp-residents"
+      ],
+      "methodologyId": "official-release",
+      "estimateEnabled": true,
+      "topicTags": [
+        "temporary-residents",
+        "students"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "metricId": "population-total",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 40960000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 41120000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 41240000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-canadian-born",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 29300000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-canadian-born",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 29380000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-canadian-born",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 29450000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 5050000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 5110000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 5175000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 1840000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 1880000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 1915000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 4770000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 4890000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 5005000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 16120000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 16190000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 16260000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 9060000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 9090000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 9125000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "bc",
+      "period": "2025-Q2",
+      "value": 5680000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "bc",
+      "period": "2025-Q3",
+      "value": 5710000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "bc",
+      "period": "2025-Q4",
+      "value": 5750000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ab",
+      "period": "2025-Q2",
+      "value": 4860000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ab",
+      "period": "2025-Q3",
+      "value": 4900000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ab",
+      "period": "2025-Q4",
+      "value": 4945000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "mb",
+      "period": "2025-Q2",
+      "value": 1480000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "mb",
+      "period": "2025-Q3",
+      "value": 1490000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "mb",
+      "period": "2025-Q4",
+      "value": 1498000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "sk",
+      "period": "2025-Q2",
+      "value": 1240000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "sk",
+      "period": "2025-Q3",
+      "value": 1248000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "sk",
+      "period": "2025-Q4",
+      "value": 1256000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ns",
+      "period": "2025-Q2",
+      "value": 1082000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ns",
+      "period": "2025-Q3",
+      "value": 1089000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ns",
+      "period": "2025-Q4",
+      "value": 1095000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nb",
+      "period": "2025-Q2",
+      "value": 858000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nb",
+      "period": "2025-Q3",
+      "value": 862000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nb",
+      "period": "2025-Q4",
+      "value": 866000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nl",
+      "period": "2025-Q2",
+      "value": 545000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nl",
+      "period": "2025-Q3",
+      "value": 548000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nl",
+      "period": "2025-Q4",
+      "value": 551000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "pe",
+      "period": "2025-Q2",
+      "value": 181000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "pe",
+      "period": "2025-Q3",
+      "value": 182000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "pe",
+      "period": "2025-Q4",
+      "value": 183000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 2160000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 2220000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 2280000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 610000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 628000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 645000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "bc",
+      "period": "2025-Q2",
+      "value": 720000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "bc",
+      "period": "2025-Q3",
+      "value": 742000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "bc",
+      "period": "2025-Q4",
+      "value": 760000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ab",
+      "period": "2025-Q2",
+      "value": 520000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ab",
+      "period": "2025-Q3",
+      "value": 538000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ab",
+      "period": "2025-Q4",
+      "value": 556000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 2380000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 2410000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 2440000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 970000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 985000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 997000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 900000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 918000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 934000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "bc",
+      "period": "2025-Q2",
+      "value": 270000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "bc",
+      "period": "2025-Q3",
+      "value": 278000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "bc",
+      "period": "2025-Q4",
+      "value": 285000,
+      "kind": "official",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 356000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 372000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 388000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 1120000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 1150000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 1180000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 1420000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 1450000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 1490000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ca",
+      "period": "2025-Q2",
+      "value": 1640000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ca",
+      "period": "2025-Q3",
+      "value": 1690000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ca",
+      "period": "2025-Q4",
+      "value": 1730000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 168000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 176000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 183000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 362000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 371000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 381000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 720000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 742000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 765000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "on",
+      "period": "2025-Q2",
+      "value": 808000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "on",
+      "period": "2025-Q3",
+      "value": 831000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "on",
+      "period": "2025-Q4",
+      "value": 850000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 84000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 90000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 95000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 176000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 181000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 186000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 142000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 146000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 150000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "qc",
+      "period": "2025-Q2",
+      "value": 208000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "qc",
+      "period": "2025-Q3",
+      "value": 211000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "qc",
+      "period": "2025-Q4",
+      "value": 214000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "bc",
+      "period": "2025-Q2",
+      "value": 224000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "bc",
+      "period": "2025-Q3",
+      "value": 230000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "bc",
+      "period": "2025-Q4",
+      "value": 238000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "bc",
+      "period": "2025-Q2",
+      "value": 198000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "bc",
+      "period": "2025-Q3",
+      "value": 205000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "bc",
+      "period": "2025-Q4",
+      "value": 211000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "bc",
+      "period": "2025-Q2",
+      "value": 246000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "bc",
+      "period": "2025-Q3",
+      "value": 254000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "bc",
+      "period": "2025-Q4",
+      "value": 261000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ab",
+      "period": "2025-Q2",
+      "value": 205000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ab",
+      "period": "2025-Q3",
+      "value": 211000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ab",
+      "period": "2025-Q4",
+      "value": 217000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ab",
+      "period": "2025-Q2",
+      "value": 145000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ab",
+      "period": "2025-Q3",
+      "value": 149000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ab",
+      "period": "2025-Q4",
+      "value": 153000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ab",
+      "period": "2025-Q2",
+      "value": 128000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ab",
+      "period": "2025-Q3",
+      "value": 132000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ab",
+      "period": "2025-Q4",
+      "value": 136000,
+      "kind": "official",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "official-release",
+      "lastUpdated": "2026-03-14T09:00:00-04:00",
+      "confidenceNote": "Official released value"
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 41360000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.957Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-canadian-born",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 29520000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 5240000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 1950000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 5120000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 16330000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 9160000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "bc",
+      "period": "2026-Q1",
+      "value": 5790000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ab",
+      "period": "2026-Q1",
+      "value": 4990000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "mb",
+      "period": "2026-Q1",
+      "value": 1506000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "sk",
+      "period": "2026-Q1",
+      "value": 1264000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "ns",
+      "period": "2026-Q1",
+      "value": 1101000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nb",
+      "period": "2026-Q1",
+      "value": 870000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "nl",
+      "period": "2026-Q1",
+      "value": 554000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-total",
+      "geographyId": "pe",
+      "period": "2026-Q1",
+      "value": 184000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 2340000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 662000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "bc",
+      "period": "2026-Q1",
+      "value": 778000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-temporary-residents",
+      "geographyId": "ab",
+      "period": "2026-Q1",
+      "value": 574000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 2470000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-naturalized",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 1009000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 950000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "population-permanent-residents",
+      "geographyId": "bc",
+      "period": "2026-Q1",
+      "value": 292000,
+      "kind": "estimate",
+      "sourceId": "statscan-pop-estimates",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 404000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 1210000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 1530000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ca",
+      "period": "2026-Q1",
+      "value": 1770000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 190000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 391000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 788000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "on",
+      "period": "2026-Q1",
+      "value": 869000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-asylum-claimants",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 100000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 191000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 154000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "qc",
+      "period": "2026-Q1",
+      "value": 217000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "bc",
+      "period": "2026-Q1",
+      "value": 246000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "bc",
+      "period": "2026-Q1",
+      "value": 217000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "bc",
+      "period": "2026-Q1",
+      "value": 268000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-tfw",
+      "geographyId": "ab",
+      "period": "2026-Q1",
+      "value": 223000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-imp",
+      "geographyId": "ab",
+      "period": "2026-Q1",
+      "value": 157000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    },
+    {
+      "metricId": "temporary-students",
+      "geographyId": "ab",
+      "period": "2026-Q1",
+      "value": 140000,
+      "kind": "estimate",
+      "sourceId": "ircc-temp-residents",
+      "methodologyId": "trend-nowcast",
+      "lastUpdated": "2026-03-14T17:18:08.958Z",
+      "confidenceNote": "Projected using the last official quarter-over-quarter change from 2025-Q3 to 2025-Q4."
+    }
+  ],
+  "highlights": [
+    {
+      "id": "headline-population",
+      "eyebrow": "National pulse",
+      "title": "Canada remains above 41 million residents in the latest release window",
+      "body": "The platform centers headline population and residency-status shifts, with clear separation between official releases and interim nowcasts.",
+      "metricId": "population-total",
+      "geographyId": "ca"
+    },
+    {
+      "id": "temp-residents",
+      "eyebrow": "Residency structure",
+      "title": "Temporary resident growth remains the fastest-moving part of the demographic mix",
+      "body": "Temporary resident detail is broken into claimant, worker, mobility, and study streams where source data supports those distinctions.",
+      "metricId": "population-temporary-residents",
+      "geographyId": "ca"
+    },
+    {
+      "id": "province-contrast",
+      "eyebrow": "Provincial context",
+      "title": "Province pages show how each jurisdiction differs from the national baseline",
+      "body": "The first release supports Canada and provinces, with methodology-backed metric views and transparent release lineage.",
+      "metricId": "population-total",
+      "geographyId": "on"
+    }
+  ],
+  "provinceProfiles": [
+    {
+      "geographyId": "ab",
+      "headline": "Alberta profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "bc",
+      "headline": "British Columbia profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "mb",
+      "headline": "Manitoba profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "nb",
+      "headline": "New Brunswick profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "nl",
+      "headline": "Newfoundland and Labrador profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "ns",
+      "headline": "Nova Scotia profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "on",
+      "headline": "Ontario profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "pe",
+      "headline": "Prince Edward Island profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "qc",
+      "headline": "Quebec profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    },
+    {
+      "geographyId": "sk",
+      "headline": "Saskatchewan profile with population, residency-status composition, and temporary resident detail.",
+      "focusAreas": [
+        "Population trend against the national baseline",
+        "Residency-status mix",
+        "Temporary resident category detail"
+      ]
+    }
+  ]
+}
