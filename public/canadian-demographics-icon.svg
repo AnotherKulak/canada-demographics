@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Modern Canadian demographics desktop application icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1020"></stop>
+      <stop offset="100%" stop-color="#16213A"></stop>
+    </linearGradient>
+
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"></stop>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.08"></stop>
+    </linearGradient>
+
+    <linearGradient id="accentRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF5A5F"></stop>
+      <stop offset="100%" stop-color="#D91C2F"></stop>
+    </linearGradient>
+
+    <linearGradient id="accentBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6EE7FF"></stop>
+      <stop offset="100%" stop-color="#2563EB"></stop>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="18"></feGaussianBlur>
+    </filter>
+
+    <clipPath id="clipWindow">
+      <rect x="88" y="88" width="336" height="250" rx="32"></rect>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="120" fill="url(#bg)"></rect>
+
+  <circle cx="132" cy="118" r="70" fill="#2563EB" opacity="0.18" filter="url(#blur)"></circle>
+  <circle cx="390" cy="390" r="84" fill="#FF5A5F" opacity="0.18" filter="url(#blur)"></circle>
+
+  <g filter="url(#shadow)">
+    <rect x="88" y="88" width="336" height="250" rx="32" fill="#0F172A"></rect>
+    <rect x="88.5" y="88.5" width="335" height="249" rx="31.5" fill="url(#glass)" stroke="#FFFFFF" stroke-opacity="0.18"></rect>
+    <rect x="88" y="88" width="336" height="46" rx="32" fill="#111B33"></rect>
+    <circle cx="118" cy="111" r="5" fill="#FF5F57"></circle>
+    <circle cx="136" cy="111" r="5" fill="#FEBC2E"></circle>
+    <circle cx="154" cy="111" r="5" fill="#28C840"></circle>
+
+    <g clip-path="url(#clipWindow)" opacity="0.14" stroke="#FFFFFF" stroke-width="1.5">
+      <line x1="118" y1="291" x2="392" y2="291"></line>
+      <line x1="118" y1="247" x2="392" y2="247"></line>
+      <line x1="118" y1="203" x2="392" y2="203"></line>
+      <line x1="118" y1="159" x2="392" y2="159"></line>
+      <line x1="118" y1="115" x2="392" y2="115"></line>
+    </g>
+
+    <rect x="132" y="230" width="34" height="61" rx="12" fill="#E5E7EB" opacity="0.9"></rect>
+    <rect x="183" y="197" width="34" height="94" rx="12" fill="url(#accentBlue)"></rect>
+    <rect x="234" y="169" width="34" height="122" rx="12" fill="#E5E7EB" opacity="0.95"></rect>
+    <rect x="285" y="146" width="34" height="145" rx="12" fill="url(#accentRed)"></rect>
+    <rect x="336" y="186" width="34" height="105" rx="12" fill="#E5E7EB" opacity="0.88"></rect>
+
+    <path d="M149 214C173 214 184 194 200 190C216 186 229 196 251 177C273 158 283 143 302 142C321 141 333 159 353 168" fill="none" stroke="url(#accentBlue)" stroke-width="8" stroke-linecap="round"></path>
+    <circle cx="149" cy="214" r="5.5" fill="#A5F3FC"></circle>
+    <circle cx="200" cy="190" r="5.5" fill="#A5F3FC"></circle>
+    <circle cx="251" cy="177" r="5.5" fill="#A5F3FC"></circle>
+    <circle cx="302" cy="142" r="5.5" fill="#A5F3FC"></circle>
+    <circle cx="353" cy="168" r="5.5" fill="#A5F3FC"></circle>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="292" y="286" width="116" height="116" rx="30" fill="#FFFFFF"></rect>
+    <rect x="292" y="286" width="116" height="116" rx="30" fill="url(#glass)"></rect>
+    <path fill="url(#accentRed)" d="M350 311l7 18 18-9-5 20 20 1-14 14 15 11-21 3 6 20-19-10-7 22-7-22-19 10 6-20-21-3 15-11-14-14 20-1-5-20 18 9z"></path>
+    <rect x="346" y="376" width="8" height="18" rx="3" fill="url(#accentRed)"></rect>
+  </g>
+
+  <g transform="translate(106 360)">
+    <circle cx="24" cy="20" r="10" fill="#F8FAFC"></circle>
+    <circle cx="58" cy="12" r="8" fill="#7DD3FC"></circle>
+    <circle cx="88" cy="22" r="9" fill="#FB7185"></circle>
+    <path d="M14 48c2-10 10-16 10-16s8 6 10 16" fill="#F8FAFC"></path>
+    <path d="M50 35c2-8 8-13 8-13s6 5 8 13" fill="#7DD3FC"></path>
+    <path d="M78 49c2-9 9-15 10-15s8 6 10 15" fill="#FB7185"></path>
+  </g>
+</svg>

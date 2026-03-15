@@ -1,4 +1,4 @@
-import type { SourceReference } from "./types.ts";
+import type { SourceReference } from "../types/dataset.ts";
 
 export const sources: SourceReference[] = [
   {

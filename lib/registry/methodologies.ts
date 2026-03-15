@@ -1,4 +1,4 @@
-import type { MethodologySummary } from "./types.ts";
+import type { MethodologySummary } from "../types/dataset.ts";
 
 export const methodologies: MethodologySummary[] = [
   {

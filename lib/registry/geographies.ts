@@ -1,4 +1,4 @@
-import type { Geography } from "./types.ts";
+import type { Geography } from "../types/dataset.ts";
 
 export const geographies: Geography[] = [
   { id: "ca", slug: "canada", name: "Canada", code: "CA", level: "country", parentId: null },

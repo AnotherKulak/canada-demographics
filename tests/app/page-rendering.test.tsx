@@ -1,9 +1,9 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
-import HomePage from "../app/page";
-import MetricPage from "../app/metrics/[metricSlug]/page";
-import ProvincePage from "../app/provinces/[provinceSlug]/page";
+import HomePage from "../../app/page";
+import MetricPage from "../../app/metrics/[metricSlug]/page";
+import ProvincePage from "../../app/provinces/[provinceSlug]/page";
 
 describe("page rendering", () => {
   it("renders the homepage with the main narrative", () => {

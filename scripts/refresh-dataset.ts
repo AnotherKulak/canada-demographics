@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { dataset } from "../lib/dataset.ts";
+import { dataset } from "../lib/data/build-dataset.ts";
 
 const outDir = resolve(process.cwd(), "data", "derived");
 mkdirSync(outDir, { recursive: true });

@@ -1,20 +1,19 @@
-import rawIrcc from "../data/seed/raw/ircc-temporary-residents.json" with { type: "json" };
-import rawStatsCan from "../data/seed/raw/statscan-population.json" with { type: "json" };
-import { geographies, geographyLookup } from "./geography.ts";
-import { methodologies } from "./methodologies.ts";
-import { metrics } from "./metrics.ts";
-import { sources } from "./sources.ts";
-import { taxonomy } from "./taxonomy.ts";
+import rawIrcc from "../../data/seed/raw/ircc-temporary-residents.json" with { type: "json" };
+import rawStatsCan from "../../data/seed/raw/statscan-population.json" with { type: "json" };
+import { geographies } from "../registry/geographies.ts";
+import { methodologies } from "../registry/methodologies.ts";
+import { metrics } from "../registry/metrics.ts";
+import { sources } from "../registry/sources.ts";
+import { taxonomy } from "../registry/taxonomy.ts";
 import type {
   DatasetBundle,
-  Geography,
   HighlightCard,
-  Metric,
   MethodologySummary,
+  Metric,
   Observation,
   ProvinceProfile,
   SourceReference
-} from "./types.ts";
+} from "../types/dataset.ts";
 
 type RawRecord = {
   metricId: string;
@@ -108,7 +107,7 @@ function buildNowcastObservations(official: Observation[]): Observation[] {
 
   const nowcasts: Observation[] = [];
 
-  for (const [key, series] of grouped.entries()) {
+  for (const series of grouped.values()) {
     const sorted = [...series].sort((a, b) => {
       const [yearA, quarterA] = quarterToTuple(a.period);
       const [yearB, quarterB] = quarterToTuple(b.period);
@@ -195,63 +194,4 @@ export const dataset: DatasetBundle = {
   provinceProfiles
 };
 
-export function getMetricBySlug(slug: string): Metric | undefined {
-  return metrics.find((metric) => metric.slug === slug);
-}
-
-export function getGeographyBySlug(slug: string): Geography | undefined {
-  return geographies.find((geo) => geo.slug === slug);
-}
-
-export function getMetricObservations(metricId: string, geographyId?: string): Observation[] {
-  return observations
-    .filter((observation) => observation.metricId === metricId)
-    .filter((observation) => (geographyId ? observation.geographyId === geographyId : true))
-    .sort((a, b) => {
-      const [yearA, quarterA] = quarterToTuple(a.period);
-      const [yearB, quarterB] = quarterToTuple(b.period);
-      return yearA - yearB || quarterA - quarterB;
-    });
-}
-
-export function getLatestObservation(metricId: string, geographyId: string, preferredKind?: "official" | "estimate") {
-  const series = getMetricObservations(metricId, geographyId);
-  const filtered = preferredKind ? series.filter((item) => item.kind === preferredKind) : series;
-  return filtered.at(-1);
-}
-
-export function getMetricSources(metricId: string): SourceReference[] {
-  const metric = metrics.find((entry) => entry.id === metricId);
-  if (!metric) {
-    return [];
-  }
-
-  return metric.sourceIds.map(assertSource);
-}
-
-export function getMethodology(methodologyId: string) {
-  return assertMethodology(methodologyId);
-}
-
-export function listProvinceSnapshots(metricId: string) {
-  return geographies
-    .filter((geo) => geo.level === "province")
-    .map((geo) => ({
-      geography: geo,
-      latest: getLatestObservation(metricId, geo.id, "official")
-    }))
-    .filter((entry) => Boolean(entry.latest));
-}
-
-export function formatNumber(value: number) {
-  return new Intl.NumberFormat("en-CA").format(value);
-}
-
-export function buildMetricCsv(metricId: string, geographyId?: string) {
-  const rows = getMetricObservations(metricId, geographyId).map((item) => {
-    const geography = geographyLookup[item.geographyId];
-    return [item.period, geography.name, item.kind, String(item.value), item.sourceId].join(",");
-  });
-
-  return ["period,geography,kind,value,sourceId", ...rows].join("\n");
-}
+export { assertMethodology, quarterToTuple };

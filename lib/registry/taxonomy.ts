@@ -1,4 +1,4 @@
-import type { MetricTaxonomyNode } from "./types.ts";
+import type { MetricTaxonomyNode } from "../types/dataset.ts";
 
 export const taxonomy: MetricTaxonomyNode[] = [
   {
