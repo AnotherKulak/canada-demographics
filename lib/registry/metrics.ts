@@ -1,4 +1,4 @@
-import type { Metric } from "./types.ts";
+import type { Metric } from "../types/dataset.ts";
 
 export const metrics: Metric[] = [
   {

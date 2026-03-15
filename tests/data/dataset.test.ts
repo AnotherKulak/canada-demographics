@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { getMetricPayload } from "../lib/api";
-import { buildMetricCsv, getLatestObservation, getMetricObservations } from "../lib/dataset";
+import { buildMetricCsv } from "../../lib/data/export";
+import { getLatestObservation, getMetricObservations } from "../../lib/data/queries";
+import { getMetricPayload } from "../../lib/payloads/metric-page";
 
 describe("dataset pipeline", () => {
   it("builds official and estimated observations for nowcast-enabled metrics", () => {

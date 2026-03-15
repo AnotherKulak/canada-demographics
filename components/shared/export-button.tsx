@@ -17,7 +17,12 @@ export function ExportButton({ filename, content }: ExportButtonProps) {
   }
 
   return (
-    <button className="ghost-button" type="button" onClick={handleExport}>
+    <button
+      className="button-secondary"
+      type="button"
+      onClick={handleExport}
+      aria-label={`Export ${filename} as CSV`}
+    >
       Export CSV
     </button>
   );
